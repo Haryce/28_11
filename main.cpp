@@ -15,15 +15,15 @@ int main() {
     int N, n;
 
     // Ввод N
-    cout << "Введите значение N: ";
+    cout << "Введите значение n: ";
     cin >> N;
 
     // Ввод n
-    cout << "Введите значение n (0 <= n <= N): ";
+    cout << "Введите значение N ";
     cin >> n;
 
     if (n < 0 || n > N) {
-        cout << "n должна быть в диапазоне от 0 до N." << endl;
+        cout << "Ошибка должно быть n > N" << endl;
         return 1;
     }
 
@@ -46,8 +46,5 @@ int main() {
         cout << N << "; " << i << "; " << timeElapsed << "; " << log2i << ";" << endl;
     }
 
-    cout << "Сумма S = " << S << endl;
-
     return 0;
-}
 
