@@ -11,6 +11,7 @@ int factorial(int n) {
     return result;
 }
 int main() {
+    setlocale(LC_ALL, "Russian");
     int N, n;
 
     // Ввод N
