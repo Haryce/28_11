@@ -1,50 +1,30 @@
 #include <iostream>
-#include <ctime>
-#include <cmath>
+#include <time.h>
 using namespace std;
-// Функция для вычисления факториала
+
 int factorial(int n) {
     int result = 1;
-    for (int i = 2; i <= n; ++i) {
+    for (int i = 1; i <= n; i++) {
         result *= i;
     }
     return result;
 }
+
 int main() {
     setlocale(LC_ALL, "Russian");
     int N, n;
-
-    // Ввод N
-    cout << "Введите значение n: ";
-    cin >> N;
-
-    // Ввод n
-    cout << "Введите значение N ";
+    cout << "Введите n: ";
     cin >> n;
-
-    if (n < 0 || n > N) {
-        cout << "Ошибка должно быть n > N" << endl;
-        return 1;
+    cout << "Введите N: ";
+    cin >> N;
+    clock_t start = clock();
+    int S = 0;
+    for (int i = 1; i <= n; i++) {
+        S += factorial(2 * i + 1);
     }
-
-    int S = 0;  // Сумма S
-    cout << "\nN; n; t, наносекунд | | O(log2 n) |" << endl;
-    for (int i = 0; i <= n; ++i) {
-        int nechet = 2 * i + 1;
-
-        // Измерение времени выполнения факториала
-        clock_t start = clock();
-        int fact = factorial(nechet);
-        clock_t end = clock();
-
-        S += fact;  // Обновление суммы S
-        double timeElapsed = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e9; // перевод в наносекунды
-
-        // Расчет O(log2 i)
-        double log2i = (i > 0) ? log2(i) : 0;
-
-        cout << N << "; " << i << "; " << timeElapsed << "; " << log2i << ";" << endl;
-    }
-
+    clock_t end = clock();
+    double time_taken = (double)(end - start) / CLOCKS_PER_SEC * 1000000000;
+    cout << "Время выполнения: " << time_taken << " наносекунд" << endl;
+    cout << "О(log2 n): " << log2(n) << endl;
     return 0;
-
+}
